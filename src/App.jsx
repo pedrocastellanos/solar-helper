@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Route, Switch, useLocation } from 'wouter'
+import { Analytics } from '@vercel/analytics/react'
 
 import { AppFooter } from '@/components/layout/AppFooter'
 import { AppHeader } from '@/components/layout/AppHeader'
@@ -80,6 +81,8 @@ function App() {
           navigate(stepPath[nextStep] ?? '/resultados')
         }}
       />
+
+      <Analytics />
     </main>
   )
 }
