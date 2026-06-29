@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/pvgis/(.*)",
+      "destination": "https://re.jrc.ec.europa.eu/api/$1"
+    }
+  ]
+}
