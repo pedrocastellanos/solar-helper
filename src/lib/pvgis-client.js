@@ -80,7 +80,11 @@ export async function pvgisGet({ version = 'v5_3', tool, params = {} }) {
     query.set(key, String(value))
   }
 
-  const url = new URL(`/api/pvgis/${version}/${tool}?${query.toString()}`, window.location.origin)
+  const baseUrl = import.meta.env.PROD
+    ? 'https://re.jrc.ec.europa.eu/api'
+    : `/api/pvgis`
+
+  const url = new URL(`${baseUrl}/${version}/${tool}?${query.toString()}`, window.location.origin)
   const cacheKey = buildCacheKey(url)
 
   const cached = getCached(cacheKey)
