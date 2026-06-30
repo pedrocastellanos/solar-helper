@@ -20,6 +20,7 @@ export function StepConfiguration() {
   }
 
   const updateFromPanels = (updates) => state.setForm((current) => recalculateSizing(current, updates))
+  const toNum = (v) => v === '' ? '' : Number(v)
 
   return (
     <section className="grid gap-4">
@@ -74,7 +75,7 @@ export function StepConfiguration() {
                   Potencia instalada objetivo (kWp)
                   <HelpInfo text={CONFIG_HELP.kwp} />
                 </Label>
-                <Input type="number" min="0.5" step="0.1" value={form.kwp} onChange={(event) => state.setForm((current) => recalculateSizing(current, { kwp: Number(event.target.value) }))} />
+                <Input type="number" min="0.5" step="0.1" value={form.kwp} onChange={(event) => state.setForm((current) => recalculateSizing(current, { kwp: toNum(event.target.value) }))} />
               </div>
               <div className="space-y-2">
                 <Label>Potencia por panel (W)</Label>
@@ -83,7 +84,7 @@ export function StepConfiguration() {
                   min="50"
                   step="5"
                   value={form.panelPowerW}
-                  onChange={(event) => updateFromPanels({ panelPowerW: Number(event.target.value) })}
+                  onChange={(event) => updateFromPanels({ panelPowerW: toNum(event.target.value) })}
                 />
               </div>
               <div className="space-y-2">
@@ -93,7 +94,7 @@ export function StepConfiguration() {
                   min="0.3"
                   step="0.01"
                   value={form.panelWidthM}
-                  onChange={(event) => updateFromPanels({ panelWidthM: Number(event.target.value) })}
+                  onChange={(event) => updateFromPanels({ panelWidthM: toNum(event.target.value) })}
                 />
               </div>
               <div className="space-y-2">
@@ -103,7 +104,7 @@ export function StepConfiguration() {
                   min="0.3"
                   step="0.01"
                   value={form.panelHeightM}
-                  onChange={(event) => updateFromPanels({ panelHeightM: Number(event.target.value) })}
+                  onChange={(event) => updateFromPanels({ panelHeightM: toNum(event.target.value) })}
                 />
               </div>
             </div>
@@ -116,7 +117,7 @@ export function StepConfiguration() {
                   min="1"
                   step="1"
                   value={form.panelCount}
-                  onChange={(event) => updateFromPanels({ panelCount: Number(event.target.value) })}
+                  onChange={(event) => updateFromPanels({ panelCount: toNum(event.target.value) })}
                 />
               </div>
               <div className="space-y-2">
@@ -126,7 +127,7 @@ export function StepConfiguration() {
                   min="50"
                   step="5"
                   value={form.panelPowerW}
-                  onChange={(event) => updateFromPanels({ panelPowerW: Number(event.target.value) })}
+                  onChange={(event) => updateFromPanels({ panelPowerW: toNum(event.target.value) })}
                 />
               </div>
               <div className="space-y-2">
@@ -136,7 +137,7 @@ export function StepConfiguration() {
                   min="0.3"
                   step="0.01"
                   value={form.panelWidthM}
-                  onChange={(event) => updateFromPanels({ panelWidthM: Number(event.target.value) })}
+                  onChange={(event) => updateFromPanels({ panelWidthM: toNum(event.target.value) })}
                 />
               </div>
               <div className="space-y-2">
@@ -146,7 +147,7 @@ export function StepConfiguration() {
                   min="0.3"
                   step="0.01"
                   value={form.panelHeightM}
-                  onChange={(event) => updateFromPanels({ panelHeightM: Number(event.target.value) })}
+                  onChange={(event) => updateFromPanels({ panelHeightM: toNum(event.target.value) })}
                 />
               </div>
             </div>
@@ -157,7 +158,7 @@ export function StepConfiguration() {
                   Superficie disponible (m²)
                   <HelpInfo text={CONFIG_HELP.area} />
                 </Label>
-                <Input type="number" min="1" step="0.1" value={form.area} onChange={(event) => state.setForm((current) => recalculateSizing(current, { area: Number(event.target.value) }))} />
+                <Input type="number" min="1" step="0.1" value={form.area} onChange={(event) => state.setForm((current) => recalculateSizing(current, { area: toNum(event.target.value) }))} />
               </div>
               <div className="space-y-2">
                 <Label>Potencia por panel (W)</Label>
@@ -166,7 +167,7 @@ export function StepConfiguration() {
                   min="50"
                   step="5"
                   value={form.panelPowerW}
-                  onChange={(event) => updateFromPanels({ panelPowerW: Number(event.target.value) })}
+                  onChange={(event) => updateFromPanels({ panelPowerW: toNum(event.target.value) })}
                 />
               </div>
               <div className="space-y-2">
@@ -176,7 +177,7 @@ export function StepConfiguration() {
                   min="0.3"
                   step="0.01"
                   value={form.panelWidthM}
-                  onChange={(event) => updateFromPanels({ panelWidthM: Number(event.target.value) })}
+                  onChange={(event) => updateFromPanels({ panelWidthM: toNum(event.target.value) })}
                 />
               </div>
               <div className="space-y-2">
@@ -186,7 +187,7 @@ export function StepConfiguration() {
                   min="0.3"
                   step="0.01"
                   value={form.panelHeightM}
-                  onChange={(event) => updateFromPanels({ panelHeightM: Number(event.target.value) })}
+                  onChange={(event) => updateFromPanels({ panelHeightM: toNum(event.target.value) })}
                 />
               </div>
             </div>
@@ -205,33 +206,33 @@ export function StepConfiguration() {
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             <div className="space-y-2">
               <Label>Potencia inversor (kW)</Label>
-              <Input type="number" min="0.5" step="0.1" value={form.inverterPowerKw} onChange={(e) => state.setForm((current) => ({ ...current, inverterPowerKw: Number(e.target.value) }))} />
+              <Input type="number" min="0.5" step="0.1" value={form.inverterPowerKw} onChange={(e) => state.setForm((current) => ({ ...current, inverterPowerKw: toNum(e.target.value) }))} />
             </div>
             <div className="space-y-2">
               <Label>Tensión batería (V)</Label>
-              <Input type="number" min="12" step="0.1" value={form.batteryVoltage} onChange={(e) => state.setForm((current) => ({ ...current, batteryVoltage: Number(e.target.value) }))} />
+              <Input type="number" min="12" step="0.1" value={form.batteryVoltage} onChange={(e) => state.setForm((current) => ({ ...current, batteryVoltage: toNum(e.target.value) }))} />
             </div>
             <div className="space-y-2">
               <Label>Capacidad batería (Ah)</Label>
-              <Input type="number" min="1" step="1" value={form.batteryAh} onChange={(e) => state.setForm((current) => ({ ...current, batteryAh: Number(e.target.value) }))} />
+              <Input type="number" min="1" step="1" value={form.batteryAh} onChange={(e) => state.setForm((current) => ({ ...current, batteryAh: toNum(e.target.value) }))} />
             </div>
             <div className="space-y-2">
               <Label>Cantidad de baterías</Label>
-              <Input type="number" min="1" step="1" value={form.batteryCount} onChange={(e) => state.setForm((current) => ({ ...current, batteryCount: Number(e.target.value) }))} />
+              <Input type="number" min="1" step="1" value={form.batteryCount} onChange={(e) => state.setForm((current) => ({ ...current, batteryCount: toNum(e.target.value) }))} />
             </div>
             <div className="space-y-2">
               <Label>Prof. descarga DoD (%)</Label>
-              <Input type="number" min="20" max="100" step="1" value={form.batteryDodPct} onChange={(e) => state.setForm((current) => ({ ...current, batteryDodPct: Number(e.target.value) }))} />
+              <Input type="number" min="20" max="100" step="1" value={form.batteryDodPct} onChange={(e) => state.setForm((current) => ({ ...current, batteryDodPct: toNum(e.target.value) }))} />
             </div>
             <div className="space-y-2">
               <Label>Eficiencia batería (%)</Label>
-              <Input type="number" min="60" max="100" step="1" value={form.batteryEfficiencyPct} onChange={(e) => state.setForm((current) => ({ ...current, batteryEfficiencyPct: Number(e.target.value) }))} />
+              <Input type="number" min="60" max="100" step="1" value={form.batteryEfficiencyPct} onChange={(e) => state.setForm((current) => ({ ...current, batteryEfficiencyPct: toNum(e.target.value) }))} />
             </div>
           </div>
 
           <div className="space-y-2">
             <Label>Horas de consumo nocturno previstas</Label>
-            <Input type="number" min="1" max="24" step="1" value={form.nightDemandHours} onChange={(e) => state.setForm((current) => ({ ...current, nightDemandHours: Number(e.target.value) }))} />
+            <Input type="number" min="1" max="24" step="1" value={form.nightDemandHours} onChange={(e) => state.setForm((current) => ({ ...current, nightDemandHours: toNum(e.target.value) }))} />
           </div>
 
           <div className="space-y-3">
@@ -272,7 +273,7 @@ export function StepConfiguration() {
                     updateLoads((loads) =>
                       loads.map((item, idx) => {
                         if (idx !== index) return item
-                        return { ...item, watts: Number(e.target.value) }
+                        return { ...item, watts: toNum(e.target.value) }
                       }),
                     )
                   } placeholder="Ej: 150" />
@@ -283,7 +284,7 @@ export function StepConfiguration() {
                     updateLoads((loads) =>
                       loads.map((item, idx) => {
                         if (idx !== index) return item
-                        return { ...item, quantity: Number(e.target.value) }
+                        return { ...item, quantity: toNum(e.target.value) }
                       }),
                     )
                   } placeholder="Ej: 2" />
@@ -301,7 +302,7 @@ export function StepConfiguration() {
                       updateLoads((loads) =>
                         loads.map((item, idx) => {
                           if (idx !== index) return item
-                          return { ...item, hoursOn: Number(e.target.value) }
+                          return { ...item, hoursOn: toNum(e.target.value) }
                         }),
                       )
                     }
